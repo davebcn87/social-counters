@@ -1,4 +1,4 @@
-bcntb
-=====
+social-counters
+===============
 
-Bcntb follower count project
+List of followers and fans for a social group

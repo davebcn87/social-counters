@@ -25,4 +25,3 @@ pages.each do |pageName|
 end
 
 puts "total likes on facebook: #{total}"
-
