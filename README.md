@@ -16,6 +16,8 @@ This ruby scripts require some gems to work. You can find below the instructions
  
 > *gem install twitter*
 
+> *gem install google_drive*
+
 > *gem install facebook*
 
 
@@ -23,6 +25,22 @@ This ruby scripts require some gems to work. You can find below the instructions
 
 CONTENT
 -------
+
+#### GOOGLE DRIVE
+
+ - GDrive.rb             # Class with all the necessary methods to access to Google Drive and read/write files
+ - drive_auth.rb         # Contains access tokens / user and password to login (this file is not included because contains private information)
+
+```ruby
+require 'google_drive'
+
+class DriveLogin
+  def getSession
+      return GoogleDrive.login("mail@gmail.com","password")
+  end
+end
+```
+
 
 #### TWITTER
  
