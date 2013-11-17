@@ -50,6 +50,13 @@ client = Twitter.configure do |config|
 end
 ```
 
+
+Now this is working with environment variables. You must execute this command or add it to your bash profile before executing the application:
+
+	export TWITTER_CONSUMER_KEY=4444444 // Replace numbers for your keys
+	export TWITTER_CONSUMER_SECRET=122222 // Replace numbers for your keys
+	export TWITTER_OAUTH_TOKEN=23123123 // Replace numbers for your keys
+	export TWITTER_OAUTH_TOKEN_SECRET=1111 // Replace numbers for your keys
  
  - twitter_counter.rb    # Code with twitter actions for count followers of several accouts
 
@@ -57,3 +64,11 @@ end
 #### FACEBOOK
 
  - facebook_counter.rb   # Code with facebook actions for count followers of several accouts
+
+
+# Sinatra Server
+
+For executing Sinatra server locally you must run this command:
+
+	bundle exec rackup -p 9292 config.ru
+
