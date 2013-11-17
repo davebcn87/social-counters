@@ -19,12 +19,18 @@ class TwitterCount
 	def getAccounts()
 		@accounts
 	end
+
 	# Count the followers by account and save a counter for the total
+	# It returns -1 when rate limit exceeded
 	def getCount()
-		counter = 0
-		@accounts.each do |username|
-			counter = counter + Twitter.user(username).followers_count
+		begin
+			counter = 0
+			@accounts.each do |username|
+				counter = counter + Twitter.user(username).followers_count
+			end
+			counter
+		rescue
+			-1
 		end
-		counter
 	end
 end

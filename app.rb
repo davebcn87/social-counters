@@ -2,7 +2,7 @@ require 'sinatra'
 require 'json'
 require './twitter_count.rb'
 
-get '/' do
+get '/twitter' do
   content_type :json
   twitterCount = TwitterCount.new()
   twitterDict = Hash.new
