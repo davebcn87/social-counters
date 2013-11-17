@@ -12,14 +12,9 @@ This ruby scripts require some gems to work. You can find below the instructions
 
 ### UBUNTU:
 
-> *apt-get install ruby* 
- 
-> *gem install twitter*
-
-> *gem install google_drive*
-
-> *gem install facebook*
-
+	~$ apt-get install ruby
+ 	
+	~$ bundle install
 
 ***************
 
