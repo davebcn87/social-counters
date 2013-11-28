@@ -23,14 +23,67 @@ class TwitterCount
 	# Count the followers by account and save a counter for the total
 	# It returns -1 when rate limit exceeded
 	def getCount()
-		begin
+		#begin
 			counter = 0
 			@accounts.each do |username|
-				counter = counter + Twitter.user(username).followers_count
+				counter = counter + TwitterClient.user(username).followers_count
 			end
 			counter
+		#rescue
+		#	-1
+		#end
+	end
+
+	# Returns an specific List (listName) owned by an specific user (userName) 
+	# It returns -1 when rate limit exceeded or bad authentication
+	def getList(userName,listName)
+		begin
+	    	list = TwitterClient.owned_lists(userName)
+	    	@selectedList=""
+	    	list.each do |listTMP|
+	    		puts listTMP.name
+	    		if(listTMP.name==listName)
+	    			@selectedList = listTMP
+    			end
+	    	end
+	    	@selectedList
 		rescue
 			-1
 		end
 	end
+
+	# Returns an array with the members IDs of the list selected with getList
+
+	def getMembersList()
+		begin
+	    	@members=[];
+	    	userMembers = TwitterClient.list_members(@selectedList)
+	    	userMembers.each do |memberInList|
+	    		@members << memberInList.id
+	    	end
+	    	#@selectedList.each do |listTMP|
+	    	#	TwitterClient.list_members(listTMP).each do |memberInList|
+	    	#		@members << memberInList.name
+	    	#	end
+	    	#end
+	    	@members
+	    rescue
+	    	-1
+	    end
+	end
+	
+	def addUserToList(username)
+		begin
+			result = 0
+			if !@members.include?(username)
+				TwitterClient.add_list_member(@selectedList,username)
+				result = 1
+			end
+			result
+		rescue
+			-1	
+		end
+	end
+
+
 end

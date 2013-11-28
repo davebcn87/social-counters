@@ -3,6 +3,6 @@ require 'google_drive'
 
 class DriveLogin
 	def getSession
-		return GoogleDrive.login("user@gmail.com", "password")
+		return GoogleDrive.login("#", "#")
 	end
 end
