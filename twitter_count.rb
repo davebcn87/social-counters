@@ -41,7 +41,6 @@ class TwitterCount
 	    	list = TwitterClient.owned_lists(userName)
 	    	@selectedList=""
 	    	list.each do |listTMP|
-	    		puts listTMP.name
 	    		if(listTMP.name==listName)
 	    			@selectedList = listTMP
     			end
@@ -53,7 +52,6 @@ class TwitterCount
 	end
 
 	# Returns an array with the members IDs of the list selected with getList
-
 	def getMembersList()
 		begin
 	    	@members=[];
@@ -61,17 +59,15 @@ class TwitterCount
 	    	userMembers.each do |memberInList|
 	    		@members << memberInList.id
 	    	end
-	    	#@selectedList.each do |listTMP|
-	    	#	TwitterClient.list_members(listTMP).each do |memberInList|
-	    	#		@members << memberInList.name
-	    	#	end
-	    	#end
 	    	@members
 	    rescue
 	    	-1
 	    end
 	end
 	
+	# Returns 0 if not added because already included
+	# Returns 1 if added
+	# Returns -1 if error
 	def addUserToList(username)
 		begin
 			result = 0

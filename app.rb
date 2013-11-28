@@ -40,6 +40,8 @@ get '/twitter/list/add/:user' do
 	content_type :json
 	twitterCount = TwitterCount.new()
 	twitterDict = Hash.new
-	twitterDict["added"] = twitterCount.addUserToList(:user)
+	twitterCount.getList("bcntb", "Socios")
+	twitterCount.getMembersList()
+	twitterDict["added"] = twitterCount.addUserToList(params[:user])
 	twitterDict.to_json
 end
